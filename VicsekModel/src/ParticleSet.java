@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class ParticleSet {
 
 	// メンバ
-	static int PBC = 600;// 周期境界条件
 	int N = 1000;// 粒子数
 	ArrayList<Particle> particleSet = new ArrayList<Particle>();
 
@@ -21,7 +20,7 @@ public class ParticleSet {
 	// 次の位置を求める
 	void nextPosition() {
 		for (Particle p : particleSet) {
-			p.nextStep(particleSet);
+			p.nextPosition(particleSet);
 		}
 
 	}

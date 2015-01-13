@@ -5,7 +5,8 @@ public class BasicPanel {
 		JFrame frame = new JFrame();
 
 		frame.setTitle("Basic Panel");
-		frame.setSize(600, 600);
+		frame.setSize(PointSet.PBC + 2 * MyPanel.margin+300, PointSet.PBC + 2
+				* MyPanel.margin);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		MyPanel panel = new MyPanel();
