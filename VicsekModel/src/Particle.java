@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Particle {
 
 	// メンバ
-	PointSet currentPoint = new PointSet();
-	PointSet nextPoint = new PointSet();
+	ParticleParameter currentPoint = new ParticleParameter();
+	ParticleParameter nextPoint = new ParticleParameter();
 
 	// 固定メンバ
 	double v = 300;
@@ -19,8 +19,8 @@ public class Particle {
 	// メソッド
 	// 初期位置決定
 	public void setInit() {
-		currentPoint.setLocation(Math.random() * PointSet.PBC, Math.random()
-				* PointSet.PBC);
+		currentPoint.setLocation(Math.random() * ParticleParameter.PBC, Math.random()
+				* ParticleParameter.PBC);
 		currentPoint.theta = 0;
 	}
 
@@ -30,7 +30,7 @@ public class Particle {
 		// currentPoint.point.y = nextPoint.getY();
 		// currentPoint.theta = nextPoint.theta;
 		currentPoint.setLocation(nextPoint);
-		nextPoint = new PointSet();
+		nextPoint = new ParticleParameter();
 	}
 
 	// 次の位置を求める

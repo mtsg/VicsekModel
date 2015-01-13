@@ -7,15 +7,16 @@ import javax.swing.JPanel;
 class MyPanel extends JPanel implements Runnable {
 
 	// メンバ
-	// ボールの位置
-	ParticleSet ps = new ParticleSet();
+	// 粒子セット
+	ParticleSet ps = null;
 	// 更新間隔
 	static double timeStep = 0.01;
 	// 余白
 	static int margin = 100;
 
 	// コンストラクタ
-	public MyPanel() {
+	public MyPanel(ParticleSet ps) {
+		this.ps = ps;
 		setBackground(Color.white);
 		// 10ミリ秒ごとに画面を書き換えるためのおまじない
 		Thread refresh = new Thread(this);
@@ -40,10 +41,10 @@ class MyPanel extends JPanel implements Runnable {
 
 	// 枠線の描画
 	public void printClosingLine(Graphics g) {
-		g.drawLine(0, 0, 0, PointSet.PBC);
-		g.drawLine(0, 0, PointSet.PBC, 0);
-		g.drawLine(0, PointSet.PBC, PointSet.PBC, PointSet.PBC);
-		g.drawLine(PointSet.PBC, 0, PointSet.PBC, PointSet.PBC);
+		g.drawLine(0, 0, 0, ParticleParameter.PBC);
+		g.drawLine(0, 0, ParticleParameter.PBC, 0);
+		g.drawLine(0, ParticleParameter.PBC, ParticleParameter.PBC, ParticleParameter.PBC);
+		g.drawLine(ParticleParameter.PBC, 0, ParticleParameter.PBC, ParticleParameter.PBC);
 
 	}
 
@@ -107,4 +108,5 @@ class MyPanel extends JPanel implements Runnable {
 		}
 
 	}
+
 }
