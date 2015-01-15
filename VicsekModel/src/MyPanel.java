@@ -18,6 +18,7 @@ class MyPanel extends JPanel implements Runnable {
 	public MyPanel(ParticleSet ps) {
 		this.ps = ps;
 		setBackground(Color.white);
+		setBounds(0, 0, 600, 600);
 		// 10ミリ秒ごとに画面を書き換えるためのおまじない
 		Thread refresh = new Thread(this);
 		refresh.start();
@@ -41,10 +42,10 @@ class MyPanel extends JPanel implements Runnable {
 
 	// 枠線の描画
 	public void printClosingLine(Graphics g) {
-		g.drawLine(0, 0, 0, ParticleParameter.PBC);
-		g.drawLine(0, 0, ParticleParameter.PBC, 0);
-		g.drawLine(0, ParticleParameter.PBC, ParticleParameter.PBC, ParticleParameter.PBC);
-		g.drawLine(ParticleParameter.PBC, 0, ParticleParameter.PBC, ParticleParameter.PBC);
+		g.drawLine(0, 0, 0, ParticleCoordinate.PBC);
+		g.drawLine(0, 0, ParticleCoordinate.PBC, 0);
+		g.drawLine(0, ParticleCoordinate.PBC, ParticleCoordinate.PBC, ParticleCoordinate.PBC);
+		g.drawLine(ParticleCoordinate.PBC, 0, ParticleCoordinate.PBC, ParticleCoordinate.PBC);
 
 	}
 

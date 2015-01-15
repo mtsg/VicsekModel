@@ -1,15 +1,16 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Particle {
 
 	// メンバ
-	ParticleParameter currentPoint = new ParticleParameter();
-	ParticleParameter nextPoint = new ParticleParameter();
+	ParticleCoordinate currentPoint = new ParticleCoordinate();
+	ParticleCoordinate nextPoint = new ParticleCoordinate();
 
 	// 固定メンバ
-	double v = 300;
+	int v = 300;
 	int r = 30;
-	double realm = 2;// 向きのノイズの範囲
+	int realm = 2;// 向きのノイズの範囲
 
 	// コンストラクタ
 	public Particle() {
@@ -19,18 +20,15 @@ public class Particle {
 	// メソッド
 	// 初期位置決定
 	public void setInit() {
-		currentPoint.setLocation(Math.random() * ParticleParameter.PBC, Math.random()
-				* ParticleParameter.PBC);
+		currentPoint.setLocation(Math.random() * ParticleCoordinate.PBC,
+				Math.random() * ParticleCoordinate.PBC);
 		currentPoint.theta = 0;
 	}
 
 	// 位置の更新
 	public void update() {
-		// currentPoint.point.x = nextPoint.getX();
-		// currentPoint.point.y = nextPoint.getY();
-		// currentPoint.theta = nextPoint.theta;
 		currentPoint.setLocation(nextPoint);
-		nextPoint = new ParticleParameter();
+		nextPoint = new ParticleCoordinate();
 	}
 
 	// 次の位置を求める
@@ -46,12 +44,9 @@ public class Particle {
 
 	// thetaを決定する
 	public double nextTheta(ArrayList<Particle> particleSet) {
-		double thetaSum = 1;
-		double thetaMean = this.currentPoint.theta;
-
-		double noise = (Math.random() - 0.5) * realm; // 向きのノイズ
-
-		int num = 0;// r近傍内の粒子の数
+		int num = 1;// r近傍内の粒子の数
+		double thetaSum = this.currentPoint.theta;// r近傍内の粒子の向きの総和(ラジアン)
+		double thetaMean = this.currentPoint.theta;// 向きの平均(ラジアン)
 
 		// r近傍にある粒子の向きを合算
 		for (Particle particle : particleSet) {
@@ -66,6 +61,12 @@ public class Particle {
 		// 自身も含めたr近傍の粒子たちの向きの平均
 		thetaMean = thetaSum / num;
 
-		return (thetaMean + noise);
+		/* ******************************************************************************* */
+		// ノイズ
+		Random rand = new Random();
+		int noiseDeg = rand.nextInt(realm + 1) - (realm / 2); // 向きのノイズ(度)
+		double noiseRad = Math.toRadians(noiseDeg);// 向きのノイズ(ラジアン)
+
+		return (thetaMean + noiseRad);
 	}
 }

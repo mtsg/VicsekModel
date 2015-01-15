@@ -1,6 +1,6 @@
 import java.awt.geom.Point2D;
 
-public class ParticleParameter extends Point2D {
+public class ParticleCoordinate extends Point2D {
 
 	// member
 	Point2D.Double point;
@@ -10,7 +10,7 @@ public class ParticleParameter extends Point2D {
 	static int PBC = 600;// 周期境界条件
 
 	// constractor
-	ParticleParameter() {
+	ParticleCoordinate() {
 		point = new Point2D.Double();
 		theta = 0;
 	}
@@ -45,7 +45,7 @@ public class ParticleParameter extends Point2D {
 		point.y = y;
 	}
 
-	public void setLocation(ParticleParameter ps) {
+	public void setLocation(ParticleCoordinate ps) {
 		this.setLocation(ps.getX(), ps.getY());
 		this.theta = ps.theta;
 	}
