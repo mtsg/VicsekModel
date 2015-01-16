@@ -10,6 +10,8 @@ public class MySlider extends JSlider implements ChangeListener {
 	JSlider rSlider = new JSlider(1, 100, 30);
 	JSlider realmSlider = new JSlider(0, 360, 2);
 
+
+
 	// コンストラクタ
 	public MySlider(ParticleSet ps) {
 		this.ps = ps;
@@ -19,7 +21,7 @@ public class MySlider extends JSlider implements ChangeListener {
 	}
 
 	public void vInit() {
-		vSlider.setMajorTickSpacing(20);
+		vSlider.setMajorTickSpacing(150);
 		vSlider.setPaintTicks(true);
 		vSlider.setPaintLabels(true);
 		vSlider.addChangeListener(this);
@@ -27,7 +29,7 @@ public class MySlider extends JSlider implements ChangeListener {
 	}
 
 	public void rInit() {
-		rSlider.setLabelTable(rSlider.createStandardLabels(20));
+		rSlider.setMajorTickSpacing(20);
 		rSlider.setPaintTicks(true);
 		rSlider.setPaintLabels(true);
 		rSlider.addChangeListener(this);
@@ -36,7 +38,7 @@ public class MySlider extends JSlider implements ChangeListener {
 
 	public void realmInit() {
 
-		realmSlider.setMajorTickSpacing(20);
+		realmSlider.setMajorTickSpacing(60);
 		realmSlider.setPaintTicks(true);
 		realmSlider.setPaintLabels(true);
 		realmSlider.addChangeListener(this);
