@@ -1,5 +1,5 @@
 # VicsekModel
-Visual simulation about vicsek model.
+Visual simulation about Vicsek Model.
 
 #説明
 Vicsek が作った、voidが相転移するモデル[Vicsek et al.][]のGUIプログラムです。
