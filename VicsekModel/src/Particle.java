@@ -36,9 +36,9 @@ public class Particle {
 
 		nextPoint.theta = nextTheta(particleSet);
 		nextPoint.point.x = currentPoint.point.x + v
-				* Math.cos(nextPoint.theta) * MyPanel.timeStep;
+				* Math.cos(nextPoint.theta) * DrawingPanel.timeStep;
 		nextPoint.point.y = currentPoint.point.y + v
-				* Math.sin(nextPoint.theta) * MyPanel.timeStep;
+				* Math.sin(nextPoint.theta) * DrawingPanel.timeStep;
 
 	}
 

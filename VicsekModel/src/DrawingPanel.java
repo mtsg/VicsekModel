@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 
 import javax.swing.JPanel;
 
-class MyPanel extends JPanel implements Runnable {
+class DrawingPanel extends JPanel implements Runnable {
 
 	// メンバ
 	// 粒子セット
@@ -15,7 +15,7 @@ class MyPanel extends JPanel implements Runnable {
 	static int margin = 100;
 
 	// コンストラクタ
-	public MyPanel(ParticleSet ps) {
+	public DrawingPanel(ParticleSet ps) {
 		this.ps = ps;
 		setBackground(Color.white);
 		setBounds(0, 0, 600, 600);
