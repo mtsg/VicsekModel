@@ -3,15 +3,15 @@ import java.util.ArrayList;
 public class ParticleSet {
 
 	// メンバ
+	Particle p = null;// 粒子
 	int N = 1000;// 粒子数
 	ArrayList<Particle> particleSet = new ArrayList<Particle>();
-
 
 	// メソッド
 	// 粒子群生成(初期配置はランダム)
 	void setInit() {
 		for (int i = 0; i < N; i++) {
-			Particle p = new Particle();
+			p = new Particle();
 			particleSet.add(p);
 		}
 

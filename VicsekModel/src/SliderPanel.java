@@ -5,10 +5,13 @@ import javax.swing.JPanel;
 
 public class SliderPanel extends JPanel {
 
-	public SliderPanel(ParticleSet ps) {
+	MyLabel myLabel = null;
+	MySlider mySlider = null;
 
-		MyLabel myLabel = new MyLabel();
-		MySlider mySlider = new MySlider(ps);
+	public SliderPanel() {
+
+		myLabel = new MyLabel();
+		mySlider = new MySlider();
 
 		BoxLayout verticalBox = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(verticalBox);

@@ -7,22 +7,20 @@ import javax.swing.JPanel;
 class DrawingPanel extends JPanel implements Runnable {
 
 	// メンバ
-	// 粒子セット
-	ParticleSet ps = null;
 	// 更新間隔
 	static double timeStep = 0.01;
 	// 余白
 	static int margin = 100;
 
 	// コンストラクタ
-	public DrawingPanel(ParticleSet ps) {
-		this.ps = ps;
+	public DrawingPanel() {
+
 		setBackground(Color.white);
 		setBounds(0, 0, 600, 600);
 		// 10ミリ秒ごとに画面を書き換えるためのおまじない
 		Thread refresh = new Thread(this);
 		refresh.start();
-		ps.setInit();
+		getPS().setInit();
 
 	}
 
@@ -32,7 +30,7 @@ class DrawingPanel extends JPanel implements Runnable {
 
 		// アニメーションの1コマ毎の処理をここに書く
 
-		for (Particle p : ps.particleSet) {
+		for (Particle p : getPS().particleSet) {
 			printClosingLine(g);
 			paintParticle(g, p);
 			paintDirection(g, p);
@@ -44,8 +42,10 @@ class DrawingPanel extends JPanel implements Runnable {
 	public void printClosingLine(Graphics g) {
 		g.drawLine(0, 0, 0, ParticleCoordinate.PBC);
 		g.drawLine(0, 0, ParticleCoordinate.PBC, 0);
-		g.drawLine(0, ParticleCoordinate.PBC, ParticleCoordinate.PBC, ParticleCoordinate.PBC);
-		g.drawLine(ParticleCoordinate.PBC, 0, ParticleCoordinate.PBC, ParticleCoordinate.PBC);
+		g.drawLine(0, ParticleCoordinate.PBC, ParticleCoordinate.PBC,
+				ParticleCoordinate.PBC);
+		g.drawLine(ParticleCoordinate.PBC, 0, ParticleCoordinate.PBC,
+				ParticleCoordinate.PBC);
 
 	}
 
@@ -101,13 +101,18 @@ class DrawingPanel extends JPanel implements Runnable {
 		while (true) {
 			repaint();
 			try {
-				ps.nextPosition();
-				ps.update();
+				getPS().nextPosition();
+				getPS().update();
 				Thread.sleep((int) (timeStep * 1000));
 			} catch (Exception e) {
 			}
 		}
 
+	}
+
+	// ParticleSetの取得
+	public ParticleSet getPS() {
+		return BasePanel.ps;
 	}
 
 }

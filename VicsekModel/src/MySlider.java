@@ -5,16 +5,12 @@ import javax.swing.event.ChangeListener;
 public class MySlider extends JSlider implements ChangeListener {
 
 	// メンバ
-	ParticleSet ps = null;
 	JSlider vSlider = new JSlider(30, 900, 300);
 	JSlider rSlider = new JSlider(1, 100, 30);
 	JSlider realmSlider = new JSlider(0, 360, 2);
 
-
-
 	// コンストラクタ
-	public MySlider(ParticleSet ps) {
-		this.ps = ps;
+	public MySlider() {
 		this.vInit();
 		this.rInit();
 		this.realmInit();
@@ -47,8 +43,7 @@ public class MySlider extends JSlider implements ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO 自動生成されたメソッド・スタブ
-		for (Particle p : ps.particleSet) {
+		for (Particle p : getPS().particleSet) {
 			p.v = vSlider.getValue();
 			p.r = rSlider.getValue();
 			p.realm = realmSlider.getValue();
@@ -56,4 +51,10 @@ public class MySlider extends JSlider implements ChangeListener {
 		}
 
 	}
+
+	// ParticleSetの取得
+	public ParticleSet getPS() {
+		return BasePanel.ps;
+	}
+
 }
